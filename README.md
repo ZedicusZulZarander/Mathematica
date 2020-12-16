@@ -1,1 +1,3 @@
-Mathematica
+Mathematic's structs.
+Fraction. Example 1/2(0.5), 1/3(0.3333)...
+
