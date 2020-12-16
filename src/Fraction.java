@@ -1,9 +1,9 @@
-public class Fraction{
+public class SimpleFraction{
 	int numerator;
 	int denominator;
 	int indicator;
 
-	Fraction(int numerator, int denominator) {
+	SimpleFraction(int numerator, int denominator) {
 		this.numerator = Math.abs(numerator);
 		this.denominator = Math.abs(denominator);
 		if((numerator<0 || denominator<0) & ((numerator*denominator)<0)){
@@ -14,14 +14,14 @@ public class Fraction{
 
 	}
 
-	Fraction(int numerator, int denominator, int indicator) {
+	SimpleFraction(int numerator, int denominator, int indicator) {
 		this.numerator = numerator;
 		this.denominator = denominator;
 		this.indicator = indicator;
 
 	}
 
-	public Fraction add(Fraction f1, Fraction f2){
+	public SimpleFraction add(SimpleFraction f1, SimpleFraction f2){
 		int f1numerator = f1.numerator * f1.indicator, 
 			f2numerator = f2.numerator * f2.indicator;
 		int f1denominator = f1.denominator, f2denominator = f2.denominator;
@@ -29,14 +29,14 @@ public class Fraction{
 		int resNumerator = f1numerator * f2denominator + f2numerator * f1denominator;
 		int resDenominator = f1denominator * f2denominator;
 	
-		Fraction resF = new Fraction(resNumerator, resDenominator);
+		SimpleFraction resF = new SimpleFraction(resNumerator, resDenominator);
 		resF.reduce();
 		return resF;
 	
 	}
 
-	public Fraction multiply(Fraction f1, Fraction f2){
-		Fraction f = new Fraction(f1.numerator * f2.numerator, 
+	public SimpleFraction multiply(SimpleFraction f1, SimpleFraction f2){
+		SimpleFraction f = new SimpleFraction(f1.numerator * f2.numerator, 
 								  f1.denominator * f2.denominator, 
 								  f1.indicator * f2.indicator);
 		f.reduce();
@@ -61,7 +61,7 @@ public class Fraction{
 		denominator = denominator/r;
 	}
 
-	public Fraction reduce(){
+	public SimpleFraction reduce(){
 		int numerator1 = numerator;
 		int denominator1 = denominator;
 		int r = 0;
@@ -75,13 +75,13 @@ public class Fraction{
 		}
 
 		r = numerator1+denominator1;
-		Fraction f = new Fraction(numerator/r,denominator/r);
+		SimpleFraction f = new SimpleFraction(numerator/r,denominator/r);
 		return f;
 	}
 
-	public boolean equals(Fraction f){
-		Fraction f1 = this.reduce();
-		Fraction f2 = f.reduce();
+	public boolean equals(SimpleFraction f){
+		SimpleFraction f1 = this.reduce();
+		SimpleFraction f2 = f.reduce();
 		if((f1.numerator == f2.numerator) & (f1.denominator == f2.denominator)){
 			return true;
 		} else {
@@ -89,13 +89,13 @@ public class Fraction{
 		}
 	}
 
-	public void dublicate(Fraction f){
+	public void dublicate(SimpleFraction f){
 		this.numerator = f.numerator;
 		this.denominator = f.denominator;	
 	}
 
-	public Fraction reverse(){
-		return new Fraction(this.denominator, this.numerator);
+	public SimpleFraction reverse(){
+		return new SimpleFraction(this.denominator, this.numerator);
 	}
 
 	@Override
