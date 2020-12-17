@@ -1,8 +1,31 @@
 public class SimpleFraction{
-	//сделать переменные приватными и добавить геттеры и сеттеры
-	int numerator;
-	int denominator;
-	int indicator;
+	private int numerator;
+	private int denominator;
+	private int indicator;
+	
+	public int getNumerator() {
+		return numerator;
+	}
+
+	public void setNumerator(int numerator) {
+		this.numerator = numerator;
+	}
+
+	public int getDenominator() {
+		return denominator;
+	}
+
+	public void setDenominator(int denominator) {
+		this.denominator = denominator;
+	}
+
+	public int getIndicator() {
+		return indicator;
+	}
+
+	public void setIndicator(int indicator) {
+		this.indicator = indicator;
+	}
 
 	SimpleFraction(int numerator, int denominator) {
 		this.numerator = Math.abs(numerator);
@@ -23,9 +46,9 @@ public class SimpleFraction{
 	}
 
 	public SimpleFraction add(SimpleFraction f1, SimpleFraction f2){
-		int f1numerator = f1.numerator * f1.indicator, 
-			f2numerator = f2.numerator * f2.indicator;
-		int f1denominator = f1.denominator, f2denominator = f2.denominator;
+		int f1numerator = f1.getNumerator() * f1.getIndicator(), 
+			f2numerator = f2.getNumerator() * f2.getIndicator();
+		int f1denominator = f1.getDenominator(), f2denominator = f2.getDenominator();
 	
 		int resNumerator = f1numerator * f2denominator + f2numerator * f1denominator;
 		int resDenominator = f1denominator * f2denominator;
@@ -38,16 +61,16 @@ public class SimpleFraction{
 	
 	//переписать multiply под статик и написать им замену
 	public SimpleFraction multiplyFraction(SimpleFraction f1, SimpleFraction f2){
-		SimpleFraction f = new SimpleFraction(f1.numerator * f2.numerator, 
-								  f1.denominator * f2.denominator, 
-								  f1.indicator * f2.indicator);
+		SimpleFraction f = new SimpleFraction(f1.getNumerator() * f2.getNumerator(), 
+								  f1.getDenominator() * f2.getDenominator(), 
+								  f1.getIndicator() * f2.getIndicator());
 		f.reduce();
 		return f;
 	
 	}
 	
 	public SimpleFraction multiply(SimpleFraction f1, int x){
-		SimpleFraction f = new SimpleFraction(f1.numerator * f1.indicator * x, f1.denominator);
+		SimpleFraction f = new SimpleFraction(f1.getNumerator() * f1.getIndicator() * x, f1.getDenominator());
 		f.reduce();
 		return f;
 	
@@ -91,7 +114,7 @@ public class SimpleFraction{
 	public boolean equals(SimpleFraction f){
 		SimpleFraction f1 = this.reduce();
 		SimpleFraction f2 = f.reduce();
-		if((f1.numerator == f2.numerator) & (f1.denominator == f2.denominator)){
+		if((f1.getNumerator() == f2.getNumerator()) & (f1.getDenominator() == f2.getDenominator())){
 			return true;
 		} else {
 			return false;
@@ -100,8 +123,8 @@ public class SimpleFraction{
 	
 	//пересмотреть назначение
 	public void dublicate(SimpleFraction f){
-		this.numerator = f.numerator;
-		this.denominator = f.denominator;	
+		this.numerator = f.getNumerator();
+		this.denominator = f.getDenominator();	
 	}
 
 	public SimpleFraction reverse(){
