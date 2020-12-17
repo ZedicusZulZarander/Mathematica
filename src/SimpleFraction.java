@@ -45,7 +45,7 @@ public class SimpleFraction{
 
 	}
 
-	public SimpleFraction add(SimpleFraction f1, SimpleFraction f2){
+	public static SimpleFraction add(SimpleFraction f1, SimpleFraction f2){
 		int f1numerator = f1.getNumerator() * f1.getIndicator(), 
 			f2numerator = f2.getNumerator() * f2.getIndicator();
 		int f1denominator = f1.getDenominator(), f2denominator = f2.getDenominator();
@@ -57,6 +57,20 @@ public class SimpleFraction{
 		resF.reduce();
 		return resF;
 	
+	}
+	
+	public void add(SimpleFraction f2){
+		int f1numerator = getNumerator() * getIndicator(), 
+			f2numerator = f2.getNumerator() * f2.getIndicator();
+		int f1denominator = getDenominator(), f2denominator = f2.getDenominator();
+	
+		int resNumerator = f1numerator * f2denominator + f2numerator * f1denominator;
+		int resDenominator = f1denominator * f2denominator;
+	
+		setNumerator(resNumerator);
+		setDenominator(resDenominator);
+		reduce();	
+		
 	}
 	
 	public static SimpleFraction multiplyFraction(SimpleFraction f1, SimpleFraction f2){
@@ -124,7 +138,7 @@ public class SimpleFraction{
 	}
 
 	public boolean equals(SimpleFraction f){
-		SimpleFraction f1 = this.reduceDublicate();
+		SimpleFraction f1 = reduceDublicate();
 		SimpleFraction f2 = f.reduceDublicate();
 		if((f1.getNumerator() == f2.getNumerator()) & (f1.getDenominator() == f2.getDenominator())){
 			return true;
@@ -140,12 +154,11 @@ public class SimpleFraction{
 	}
 
 	public SimpleFraction reverse(){
-		return new SimpleFraction(this.denominator, this.numerator);
+		return new SimpleFraction(denominator, numerator);
 	}
 
 	@Override
 	public String toString() {
-
 		return Integer.toString(numerator * indicator)+"/"+Integer.toString(denominator);
 	}
 
