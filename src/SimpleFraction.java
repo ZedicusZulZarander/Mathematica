@@ -140,12 +140,11 @@ public class SimpleFraction{
 	}
 
 	public SimpleFraction reverse(){
-		return new SimpleFraction(this.denominator, this.numerator);
+		return new SimpleFraction(denominator, numerator);
 	}
 
 	@Override
 	public String toString() {
-
 		return Integer.toString(numerator * indicator)+"/"+Integer.toString(denominator);
 	}
 
