@@ -4,8 +4,8 @@ public class Main {
 	    int b = 100;
 	    SimpleFraction d = new SimpleFraction(-1,3);
 	    SimpleFraction d1 = new SimpleFraction(1,3);
-		d.reduce();
-		System.out.print(d.add(d, d1).toInt());
+		d.multiplyFraction(d1);
+		System.out.print(d);
 	} 
 
 }

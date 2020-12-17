@@ -59,8 +59,7 @@ public class SimpleFraction{
 	
 	}
 	
-	//переписать multiply под статик и написать им замену
-	public SimpleFraction multiplyFraction(SimpleFraction f1, SimpleFraction f2){
+	public static SimpleFraction multiplyFraction(SimpleFraction f1, SimpleFraction f2){
 		SimpleFraction f = new SimpleFraction(f1.getNumerator() * f2.getNumerator(), 
 								  f1.getDenominator() * f2.getDenominator(), 
 								  f1.getIndicator() * f2.getIndicator());
@@ -69,11 +68,24 @@ public class SimpleFraction{
 	
 	}
 	
-	public SimpleFraction multiply(SimpleFraction f1, int x){
+	public void multiplyFraction(SimpleFraction f1){
+		setNumerator(f1.getNumerator() * getNumerator());
+		setDenominator(f1.getDenominator() * getDenominator());
+		setIndicator(f1.getIndicator() * getIndicator());
+		reduce();
+	
+	}
+	
+	public static SimpleFraction multiplyInt(SimpleFraction f1, int x){
 		SimpleFraction f = new SimpleFraction(f1.getNumerator() * f1.getIndicator() * x, f1.getDenominator());
 		f.reduce();
 		return f;
 	
+	}
+	
+	public void multiplyInt( int x){
+		setNumerator(getNumerator()*x);
+		reduce();
 	}
 
 	public void reduce(){
@@ -93,7 +105,7 @@ public class SimpleFraction{
 		denominator = denominator/r;
 	}
 
-	public SimpleFraction reduce(){
+	public SimpleFraction reduceDublicate(){
 		int numerator1 = numerator;
 		int denominator1 = denominator;
 		int r = 0;
@@ -112,8 +124,8 @@ public class SimpleFraction{
 	}
 
 	public boolean equals(SimpleFraction f){
-		SimpleFraction f1 = this.reduce();
-		SimpleFraction f2 = f.reduce();
+		SimpleFraction f1 = this.reduceDublicate();
+		SimpleFraction f2 = f.reduceDublicate();
 		if((f1.getNumerator() == f2.getNumerator()) & (f1.getDenominator() == f2.getDenominator())){
 			return true;
 		} else {
